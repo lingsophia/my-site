@@ -1,0 +1,91 @@
+/* ---- Colors: change these and every page follows ---- */
+:root {
+  --paper: #F5F6F4; --ink: #1B2230; --muted: #5B6577;
+  --rule: #D9DDE3; --accent: #2E6F95; --bone: #DCE1E8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #12161D; --ink: #E8ECF2; --muted: #9AA5B6;
+    --rule: #2A3240; --accent: #7FB5D6; --bone: #2A3341;
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  font-size: 0.95rem; line-height: 1.65;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: 40rem; margin: 0 auto; padding: 0 1.5rem 6rem; }
+
+nav {
+  position: sticky; top: 0; z-index: 5; border-bottom: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(8px);
+}
+nav .inner { max-width: 40rem; margin: 0 auto; padding: .9rem 1.5rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
+nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+
+h1, h2 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; margin: 0; line-height: 1.05; }
+h1 { font-size: clamp(3.5rem, 12vw, 5.5rem); letter-spacing: -0.02em; padding-top: 3.5rem; }
+h1.big { font-size: clamp(4rem, 14vw, 6.5rem); padding-top: 4rem; }
+h2 { font-size: 2.1rem; margin: 2rem 0 1rem; }
+p { margin: 0 0 1rem; }
+.lede { font-size: 1.2rem; margin-top: 1.5rem; }
+.muted { color: var(--muted); }
+.links { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 1.5rem; }
+
+.entry {
+  margin-bottom: 1.25rem;
+}
+
+.entry-title {
+  font-size: 1.05rem;
+  margin-bottom: 0.25rem; /* Brings the description closer to the title */
+  color: var(--ink);
+  font-weight: 500; /* Softens the whole line */
+}
+
+/* If you are using <strong> tags in your HTML, override the default heavy bold */
+.entry-title strong {
+  font-weight: 500; /* Keeps the Org name distinct, but not too heavy */
+}
+
+/* The Indented Description */
+.entry-desc {
+  padding-left: 2.5rem; /* This creates the indent */
+}
+
+.entry-desc p {
+  margin-bottom: 0.75rem;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.award-list {
+  list-style-type: none; /* 1. Kills the bullet point */
+  padding-left: 0;       /* 2. Removes the space where the bullet was */
+  margin-top: 0;
+  margin-bottom: 1rem;
+  margin-left: 2.5rem;   /* 3. This creates the clean indent */
+}
+
+.award-list li {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+#spine { position: fixed; left: 2rem; top: 50%; transform: translateY(-50%); display: none; flex-direction: column; align-items: center; gap: 5px; }
+#spine i { display: block; height: 9px; border-radius: 5px; background: var(--bone); transition: background .25s; }
+#spine i.on { background: var(--accent); }
+@media (min-width: 1000px) { #spine { display: flex; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } #spine i { transition: none; } }
